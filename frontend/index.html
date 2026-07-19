@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1e293b">
+<title>考研助手</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="stylesheet" href="/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.css">
+</head>
+<body>
+
+<!-- Login Overlay -->
+<div id="login-overlay">
+  <div class="login-card">
+    <h1>考研助手</h1>
+    <p class="login-subtitle">个人考研备考管理平台</p>
+    <div id="login-tabs">
+      <button class="login-tab active" data-tab="login">登录</button>
+      <button class="login-tab" data-tab="register">注册</button>
+    </div>
+    <form id="login-form">
+      <input type="text" id="login-username" placeholder="用户名" required autocomplete="username">
+      <input type="password" id="login-password" placeholder="密码" required autocomplete="current-password">
+      <button type="submit" class="btn-primary">登录</button>
+      <p class="error-msg" id="login-error"></p>
+    </form>
+    <form id="register-form" style="display:none">
+      <input type="text" id="reg-username" placeholder="用户名 (2-50字符)" required minlength="2" maxlength="50" autocomplete="username">
+      <input type="password" id="reg-password" placeholder="密码 (4-100字符)" required minlength="4" maxlength="100" autocomplete="new-password">
+      <input type="password" id="reg-password-confirm" placeholder="确认密码" required>
+      <button type="submit" class="btn-primary">注册</button>
+      <p class="error-msg" id="register-error"></p>
+    </form>
+  </div>
+</div>
+
+<!-- App Shell -->
+<div id="app-shell" style="display:none">
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-brand">
+      <h2>考研助手</h2>
+    </div>
+    <ul id="nav-links">
+      <li><a href="#dashboard" class="nav-link" data-page="dashboard">
+        <span class="nav-icon">&#128202;</span> 学习仪表盘
+      </a></li>
+      <li><a href="#plan" class="nav-link" data-page="plan">
+        <span class="nav-icon">&#128197;</span> 备考计划
+      </a></li>
+      <li><a href="#english" class="nav-link" data-page="english">
+        <span class="nav-icon">&#127468;&#127463;</span> 英语专项
+      </a></li>
+      <li><a href="#resources" class="nav-link" data-page="resources">
+        <span class="nav-icon">&#128218;</span> 学习资源
+      </a></li>
+      <li><a href="#schools" class="nav-link" data-page="schools">
+        <span class="nav-icon">&#127891;</span> 院校信息
+      </a></li>
+      <li><a href="#settings" class="nav-link" data-page="settings">
+        <span class="nav-icon">&#9881;</span> 设置
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <button id="logout-btn" class="btn-logout logout-item">退出登录</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="content">
+    <!-- Page content rendered here by JS router -->
+  </main>
+</div>
+
+<script src="/js/api.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/pages/dashboard.js"></script>
+<script src="/js/pages/plan.js"></script>
+<script src="/js/pages/english.js?v=2"></script>
+<script>console.log('english registered?', window.App && window.App.hasPage && window.App.hasPage('english')); console.log('All pages:', window.App && window.App.getPages && window.App.getPages());</script>
+<script src="/js/pages/resources.js"></script>
+<script src="/js/pages/schools.js"></script>
+<script src="/js/pages/settings.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+*.db
+data/kaoyan.db
+data/settings.json
+uploads/*
+!uploads/.gitkeep
+.superpowers/
+*.bak
+/tmp/
+
