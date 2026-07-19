@@ -54,6 +54,7 @@ def init_db() -> None:
             actual_minutes INTEGER DEFAULT 0,
             sort_order INTEGER DEFAULT 0,
             next_review_date TEXT,
+            added_to_today TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
@@ -170,6 +171,7 @@ def init_db() -> None:
             sentence_score REAL DEFAULT 0.0,
             overall_score REAL DEFAULT 0.0,
             optimized_version TEXT DEFAULT '',
+            is_template INTEGER DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
 
